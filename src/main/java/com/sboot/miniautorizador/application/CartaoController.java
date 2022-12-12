@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -18,6 +20,12 @@ public class CartaoController {
     @PostMapping("cartoes")
     public ResponseEntity cadastrarCartao(@RequestBody CartaoRequest cartaoRequest){
         return new ResponseEntity(CartaoResponse.fromModel(cartaoService.save(cartaoRequest.toModel())), HttpStatus.CREATED);
+    }
+
+    @GetMapping("cartoes/{numeroCartao}")
+    public BigDecimal getSaldoCartao(@PathVariable String numeroCartao){
+        var cartao = cartaoService.consultarSaldoByNumeroCartao(numeroCartao);
+        return cartao.getSaldoInicial();
     }
 
 }
