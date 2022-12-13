@@ -1,10 +1,11 @@
 package com.sboot.miniautorizador.service;
 
-import com.sboot.miniautorizador.application.exception.CartaoInexistenteException;
-import com.sboot.miniautorizador.application.exception.SaldoInsuficienteException;
-import com.sboot.miniautorizador.application.exception.SenhaInvalidaException;
+
 import com.sboot.miniautorizador.application.representation.TransacaoRequest;
 import com.sboot.miniautorizador.domain.model.Cartao;
+import com.sboot.miniautorizador.exception.CartaoInexistenteException;
+import com.sboot.miniautorizador.exception.SaldoInsuficienteException;
+import com.sboot.miniautorizador.exception.SenhaInvalidaException;
 import com.sboot.miniautorizador.infra.repositoty.CartaoRepository;
 import com.sboot.miniautorizador.util.Constantes;
 import lombok.RequiredArgsConstructor;

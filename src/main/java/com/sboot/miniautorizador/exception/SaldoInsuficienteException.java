@@ -1,4 +1,4 @@
-package com.sboot.miniautorizador.application.exception;
+package com.sboot.miniautorizador.exception;
 
 public class SaldoInsuficienteException extends Exception{
 

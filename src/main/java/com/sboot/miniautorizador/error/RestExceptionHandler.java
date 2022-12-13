@@ -1,8 +1,8 @@
 package com.sboot.miniautorizador.error;
 
-import com.sboot.miniautorizador.application.exception.CartaoInexistenteException;
-import com.sboot.miniautorizador.application.exception.SaldoInsuficienteException;
-import com.sboot.miniautorizador.application.exception.SenhaInvalidaException;
+import com.sboot.miniautorizador.exception.CartaoInexistenteException;
+import com.sboot.miniautorizador.exception.SaldoInsuficienteException;
+import com.sboot.miniautorizador.exception.SenhaInvalidaException;
 import com.sboot.miniautorizador.util.Constantes;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
