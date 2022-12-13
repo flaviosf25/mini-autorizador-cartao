@@ -2,6 +2,7 @@ package com.sboot.miniautorizador.application;
 
 import com.sboot.miniautorizador.application.representation.CartaoRequest;
 import com.sboot.miniautorizador.application.representation.CartaoResponse;
+import com.sboot.miniautorizador.application.representation.TransacaoRequest;
 import com.sboot.miniautorizador.service.CartaoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,9 +24,15 @@ public class CartaoController {
     }
 
     @GetMapping("cartoes/{numeroCartao}")
-    public BigDecimal getSaldoCartao(@PathVariable String numeroCartao){
+    public BigDecimal getSaldoCartao(@PathVariable("numeroCartao") String numeroCartao){
         var cartao = cartaoService.consultarSaldoByNumeroCartao(numeroCartao);
         return cartao.getSaldoInicial();
+    }
+
+    @PostMapping("transacoes")
+    public ResponseEntity efetuarTransacao(@RequestBody TransacaoRequest transacaoRequest) throws Exception {
+        this.cartaoService.efetuarTransacao(transacaoRequest);
+        return new ResponseEntity(HttpStatus.CREATED);
     }
 
 }

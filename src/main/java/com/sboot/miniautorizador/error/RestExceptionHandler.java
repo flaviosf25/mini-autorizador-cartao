@@ -1,5 +1,8 @@
 package com.sboot.miniautorizador.error;
 
+import com.sboot.miniautorizador.application.exception.CartaoInexistenteException;
+import com.sboot.miniautorizador.application.exception.SaldoInsuficienteException;
+import com.sboot.miniautorizador.application.exception.SenhaInvalidaException;
 import com.sboot.miniautorizador.util.Constantes;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -20,6 +23,21 @@ public class RestExceptionHandler {
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity erroCartaoNaoEncontrato(NotFoundException ex){
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
+    @ExceptionHandler(SaldoInsuficienteException.class)
+    protected ResponseEntity erroSaldoInsuficiente(SaldoInsuficienteException ex) {
+        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(SenhaInvalidaException.class)
+    protected ResponseEntity erroSenhaInvalida(SenhaInvalidaException ex) {
+        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(CartaoInexistenteException.class)
+    protected ResponseEntity erroCartaoInxistente(CartaoInexistenteException ex) {
+        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(ex.getMessage());
     }
 
 }
